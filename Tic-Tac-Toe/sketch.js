@@ -1,79 +1,80 @@
-// An array of all the colors used in this code.
-var turn=0
+var turn= 0, textx=0, texty=0;
+
 function setup() {
-    //size of the canvas to draw on
     createCanvas(innerWidth,innerHeight); 
-    // Set the background to white, and move the line to setup();
     background("yellow");
-
     fill("#404040");
-  rect(0, 0, width, 50);
+    rect(0, 0, width, 50);
+    textAlign(CENTER);
+    fill("White");
+    textSize(18);
+    text("TIC TAC TOE", width / 2, 33);
+    fill("Black");
 
-  textAlign(CENTER);
-  fill("White");
-  textSize(18);
-  text("TIC TAC TOE", width / 2, 33);
-  fill("Black");
-}
-
-
-function draw()
-{
-
- createRow(150)
- createRow(250)
- createRow(350)  
+    createRow(150);
+    createRow(250);
+    createRow(350);
 }
 
 function createRow(y)
 {
   for (x = 150; x < 450; x=x+100)
-   {
-       var b1= new Box(x, y, 100, 100); 
-       b1.appear();   
-   }  
+  {
+      var b1= new Box(x, y, 100, 100); 
+      b1.appear();   
+  }  
 }
 
+function draw()
+{
 
+}
 
-    
-
-function mousePressed() {
-  textx=0
-  texty=0
-  if (mouseY < 250 && mouseX < 250 && mouseY > 150 && mouseX > 150) {
-    currentColor = "white";
-    textx=200
-    texty=200
+function mousePressed()
+{
+  if (mouseY < 250 && mouseX < 250 && mouseY > 150 && mouseX > 150) 
+  {
+    textx=200;
+    texty=200;
   } 
-  else if (mouseX < 350 && mouseY < 250) {
-    currentColor = "white";
-    textx=300
-    texty=200
+  else if (mouseX < 350 && mouseY < 250) 
+  {
+    textx=300;
+    texty=200;
   } 
-  else if(mouseX < 450 && mouseY < 250) {
-    currentColor = "white";
-    textx=400
-    texty=200
+  else if(mouseX < 450 && mouseY < 250) 
+  {
+    textx=400;
+    texty=200;
+  } 
+  else if(mouseX < 250 && mouseY < 350) 
+  {
+    textx=200;
+    texty=300;
+  } 
+  else if(mouseX < 350 && mouseY < 350) {
+    textx=300;
+    texty=300;
   } 
   
-      
-
+  
+  console.log(textx+","+ texty);
+    
   if(turn%2==0)
-  {
-    text("O",textx,texty) 
-  }
-  else{
-    text("X",textx,texty)
-
-  }
-
-  turn=turn+1
-
+    {
+      text("O",textx,texty) ;
+    }
+    else
+    {
+      text("X",textx,texty);
+    }
+    turn=turn+1;
+  
+  
   if(turn==9)
   {
-    background("yellow")
-    turn=0
+    background("yellow");
+    turn=0;
   }
-  console.log(turn)
 }
+
